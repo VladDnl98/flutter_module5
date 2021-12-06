@@ -10,11 +10,11 @@ class ScaffoldExample extends StatefulWidget {
 class _ScaffoldExampleState extends State<ScaffoldExample> {
   int tabIndex = 0;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  late PersistentBottomSheetController _controller;
+  PersistentBottomSheetController _controller;
 
   void toggleBottomSheet() {
     if (_controller == null) {
-      _controller = scaffoldKey.currentState!.showBottomSheet(
+      _controller = scaffoldKey.currentState.showBottomSheet(
         (context) => Container(
           color: Colors.deepOrange,
           height: 200,
@@ -25,7 +25,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       );
     } else {
       _controller.close();
-      _controller = null!;
+      _controller == null;
     }
   }
 
@@ -38,19 +38,19 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text('App Bar Title'),
+        title: const Text('App Bar Title'),
         centerTitle: true,
         actions: [
           Builder(
             builder: (context) => IconButton(
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
             ),
           ),
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {},
           )
         ],
@@ -58,7 +58,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       drawer: Drawer(
         child: Column(
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               child: CircleAvatar(
                 radius: 60,
                 backgroundColor: Colors.green,
@@ -66,7 +66,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
                     'https://img.artlebedev.ru/everything/bezlimit/identity/morda/bezlimit-identity-1200.jpg'),
               ),
             ),
-            ListTile(
+            const ListTile(
               title: Text('Главная'),
               leading: Icon(Icons.home),
               trailing: Icon(Icons.arrow_forward),
@@ -132,10 +132,9 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       // ),
 
       floatingActionButton: FloatingActionButton.extended(
-        icon: Icon(Icons.add),
-        label: Text('Open'),
-        onPressed: toggleBottomSheet,
-      ),
+          icon: Icon(Icons.add),
+          label: Text('Open'),
+          onPressed: toggleBottomSheet),
     );
   }
 }
