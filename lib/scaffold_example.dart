@@ -10,11 +10,11 @@ class ScaffoldExample extends StatefulWidget {
 class _ScaffoldExampleState extends State<ScaffoldExample> {
   int tabIndex = 0;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  PersistentBottomSheetController _controller;
+  PersistentBottomSheetController? _controller;
 
   void toggleBottomSheet() {
     if (_controller == null) {
-      _controller = scaffoldKey.currentState.showBottomSheet(
+      _controller = scaffoldKey.currentState?.showBottomSheet(
         (context) => Container(
           color: Colors.deepOrange,
           height: 200,
@@ -24,8 +24,8 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
         ),
       );
     } else {
-      _controller.close();
-      _controller == null;
+      _controller?.close();
+      _controller = null;
     }
   }
 
@@ -37,22 +37,22 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+
       appBar: AppBar(
         title: const Text('App Bar Title'),
-        centerTitle: true,
         actions: [
           Builder(
             builder: (context) => IconButton(
-              icon: const Icon(Icons.person),
+              icon: Icon(Icons.person),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {},
-          )
+          // IconButton(
+          //   icon: const Icon(Icons.add),
+          //   onPressed: () {},
+          // )
         ],
       ),
       drawer: Drawer(
