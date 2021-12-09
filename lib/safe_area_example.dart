@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SafeAreaExample extends StatefulWidget {
-  SafeAreaExample({Key? key}) : super(key: key);
+  const SafeAreaExample({Key? key}) : super(key: key);
 
   @override
   _SafeAreaExampleState get createState => _SafeAreaExampleState();
@@ -10,8 +10,9 @@ class SafeAreaExample extends StatefulWidget {
 class _SafeAreaExampleState extends State<SafeAreaExample> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
+    return const Scaffold(
+        // ignore: unnecessary_const
+        body: const Center(
       child: Text('Привет мир, я заебался.'),
     ));
   }

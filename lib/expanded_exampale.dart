@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ExpandedExemple extends StatefulWidget {
-  ExpandedExemple({Key? key}) : super(key: key);
+  const ExpandedExemple({Key? key}) : super(key: key);
 
   @override
   _ExpandedExampleState get createState => _ExpandedExampleState();

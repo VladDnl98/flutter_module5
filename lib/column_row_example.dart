@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColumnRowExample extends StatefulWidget {
-  ColumnRowExample({Key? key}) : super(key: key);
+  const ColumnRowExample({Key? key}) : super(key: key);
 
   @override
   _ColumnRowExampleState get createState => _ColumnRowExampleState();
