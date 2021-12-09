@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScaffoldExample extends StatefulWidget {
-  ScaffoldExample({Key? key}) : super(key: key);
+  const ScaffoldExample({Key? key}) : super(key: key);
 
   @override
   _ScaffoldExampleState get createState => _ScaffoldExampleState();
@@ -12,6 +12,10 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   PersistentBottomSheetController? _controller;
 
+  void openDrawer() {
+    scaffoldKey.currentState?.openDrawer();
+  }
+
   void toggleBottomSheet() {
     if (_controller == null) {
       _controller = scaffoldKey.currentState?.showBottomSheet(
@@ -19,7 +23,10 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
           color: Colors.deepOrange,
           height: 200,
           child: Center(
-            child: Text('BOTTOM SHEET'),
+            child: TextButton(
+              onPressed: openDrawer,
+              child: const Text('Open Drawer'),
+            ),
           ),
         ),
       );
@@ -27,10 +34,6 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       _controller?.close();
       _controller = null;
     }
-  }
-
-  void openDrawer() {
-    scaffoldKey.currentState?.openDrawer();
   }
 
   @override
@@ -43,7 +46,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
         actions: [
           Builder(
             builder: (context) => IconButton(
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
@@ -72,13 +75,15 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
               trailing: Icon(Icons.arrow_forward),
             ),
             ListTile(
-              title: Text('Брони'),
-              leading: Icon(Icons.home),
-              trailing: Icon(Icons.arrow_forward),
+              title: const Text('Брони'),
+              leading: const Icon(Icons.home),
+              trailing: const Icon(Icons.arrow_forward),
               onTap: () {
+                // ignore: avoid_print
                 print('TAP');
               },
               onLongPress: () {
+                // ignore: avoid_print
                 print('LONG PRESS');
               },
             ),
@@ -96,7 +101,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
           children: [
             TextButton(
               onPressed: openDrawer,
-              child: Text('Open Drawer'),
+              child: const Text('Open Drawer'),
             ),
           ],
         ),
@@ -132,8 +137,8 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       // ),
 
       floatingActionButton: FloatingActionButton.extended(
-          icon: Icon(Icons.add),
-          label: Text('Open'),
+          icon: const Icon(Icons.add),
+          label: const Text('Open'),
           onPressed: toggleBottomSheet),
     );
   }
